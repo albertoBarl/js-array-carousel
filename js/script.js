@@ -58,12 +58,21 @@ next.addEventListener('click', function(){
         items[itemActive].classList.add('active')
         circles[itemActive].classList.add('active')
     }
+    
+    if(itemActive === items.length -1){
+        next.classList.add('hidden')
+        prev.classList.remove('hidden')
+    }
 });
 
 // BOTTONE "PRECEDENTE"
 prev.addEventListener('click', function(){
-    
-    if(itemActive){
+        // 1- SE l'immagine non è la prima
+    // 1.1- tolgo .active dall'immagine attuale e lo passo alla precedente
+    // 1.2- tolgo .active al pallino attuale e lo passo al precedente
+    // 1.3- eseguo il decremento
+    // 2- ALTRIMENTI non faccio nulla
+    if(itemActive > 0){
         // RIMUOVO .ACTIVE AGLI ELEMENTI VISIBILI
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
@@ -74,6 +83,11 @@ prev.addEventListener('click', function(){
         // AGGIUNGO .ACTIVE ALL'ELEMENTO PRECEDENTE
         items[itemActive].classList.add('active')
         circles[itemActive].classList.add('active')
+    }
+
+    if(itemActive === 0){
+        prev.classList.add('hidden')
+        next.classList.remove('hidden')
     }
 })
 
